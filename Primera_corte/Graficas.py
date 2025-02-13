@@ -10,3 +10,5 @@ plt.plot(n2)
 plt.plot(n3)
 plt.show()
 
+
+    
