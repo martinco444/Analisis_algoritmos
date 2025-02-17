@@ -11,4 +11,4 @@ for j in range(1, len(nums)):
     
 print(f"el array ordenado es: {nums}")
         
-    
+#Loop invariant en .doc
