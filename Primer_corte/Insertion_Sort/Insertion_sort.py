@@ -11,10 +11,4 @@ for j in range(1, len(nums)):
     
 print(f"el array ordenado es: {nums}")
         
-#Leer en que consiste el algoritmo loop invariant, pagina 18 del libro y aplicarlo al de busqueda lineal
-
-#entregar codigo insertion sort descendente // LISTO
-
-#pseudocodigo de algoritmo de busqueda lineal y escrito de la foto tomada en clase
-
-#saber cuanto tiempo le toma al codigo de los puntos compilar     
+    
