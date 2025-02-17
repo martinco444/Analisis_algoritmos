@@ -1,7 +1,8 @@
 import random
 import matplotlib.pyplot as plt
+import time 
 
-# Calcula la distancia Euclidiana entre dos puntos p y q.
+
 def distance(p, q):
     return ((p[0] - q[0])**2 + (p[1] - q[1])**2) ** 0.5
 
@@ -55,6 +56,7 @@ def closest_pair(points):
 
 def main():
     n = int(input("Ingresa el número de puntos: "))
+    start_time = time.time()  # Inicio del cronómetro
 
     points = [(random.uniform(0, 100), random.uniform(0, 100)) for _ in range(n)]
 
@@ -65,16 +67,15 @@ def main():
     d, pair = closest_pair(points)
     print(f"\nLa menor distancia es: {d}\nEntre los puntos: {pair[0]} y {pair[1]}")
 
-    # Grafica usando Matplotlib
     x_vals, y_vals = zip(*points)
     plt.scatter(x_vals, y_vals, color="blue", label="Puntos")
-
-    # Dibuja la línea del par más cercano
     plt.plot([pair[0][0], pair[1][0]], [pair[0][1], pair[1][1]], "r-", lw=2, label="Par más cercano")
-
     plt.legend()
     plt.grid()
-    plt.show()
+    plt.show()  
+
+    end_time = time.time()  
+    print(f"\nTiempo: {end_time - start_time:.5f} segundos")
 
 if __name__ == '__main__':
     main()
