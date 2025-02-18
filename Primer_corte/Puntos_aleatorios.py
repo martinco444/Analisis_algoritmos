@@ -1,6 +1,6 @@
 import random
 import matplotlib.pyplot as plt
-import time 
+import time
 
 
 def distance(p, q):
@@ -19,7 +19,6 @@ def brute_force(points):
     return min_d, pair
 
 def closest_pair_rec(Px, Py):
-    """Algoritmo de divide y vencerás."""
     n = len(Px)
     if n <= 3:
         return brute_force(Px)
@@ -56,7 +55,7 @@ def closest_pair(points):
 
 def main():
     n = int(input("Ingresa el número de puntos: "))
-    start_time = time.time()  # Inicio del cronómetro
+    start_time = time.time()  
 
     points = [(random.uniform(0, 100), random.uniform(0, 100)) for _ in range(n)]
 
@@ -65,17 +64,42 @@ def main():
         print(p)
 
     d, pair = closest_pair(points)
+    end_time = time.time()
+    execution_time = end_time - start_time
     print(f"\nLa menor distancia es: {d}\nEntre los puntos: {pair[0]} y {pair[1]}")
+    print(f"\nTiempo de ejecución: {execution_time:.5f} segundos")
 
+    plt.figure(figsize=(12, 5))
+
+    plt.subplot(1, 2, 1)
     x_vals, y_vals = zip(*points)
     plt.scatter(x_vals, y_vals, color="blue", label="Puntos")
     plt.plot([pair[0][0], pair[1][0]], [pair[0][1], pair[1][1]], "r-", lw=2, label="Par más cercano")
     plt.legend()
     plt.grid()
-    plt.show()  
+    plt.title(f"Puntos Generados\nTiempo: {execution_time:.5f} s")
 
-    end_time = time.time()  
-    print(f"\nTiempo: {end_time - start_time:.5f} segundos")
+    # Gráfica de cómputo (Tiempo de ejecución vs. Número de puntos)
+    n_values = [10, 50, 100, 200, 500, 1000, 2000]
+    execution_times = []
+
+    for n in n_values:
+        points = [(random.uniform(0, 100), random.uniform(0, 100)) for _ in range(n)]
+        start_time = time.time()
+        closest_pair(points)
+        end_time = time.time()
+        execution_times.append(end_time - start_time)
+
+    plt.subplot(1, 2, 2)
+    plt.plot(n_values, execution_times, marker='o', linestyle='-', color="green")
+    plt.xlabel("Número de puntos (n)")
+    plt.ylabel("Tiempo de ejecución (s)")
+    plt.title("Gráfica de Cómputo")
+    plt.grid()
+
+    plt.tight_layout()
+    plt.show()
+
 
 if __name__ == '__main__':
     main()
