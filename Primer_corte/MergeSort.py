@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 import time
 
-# Generar arreglo sin números repetidos
-array = np.random.choice(range(0, 101), size=50, replace=False)  # Números únicos sin repetición
+array = np.random.choice(range(0, 101), size=20) 
 
 def mergeSort(array):
     if len(array) > 1:
@@ -44,23 +44,22 @@ def graficaComputo():
     tamanos = []
     times = []
     
-    for tamano in range(100, 1001, 100):
-        array = np.random.choice(range(0, tamano * 2), size=tamano, replace=False)
+    for tamano in range(0, 1001, 10):
+        array = [random.randint(0,100) for _ in range(tamano)]
         start_time = time.perf_counter()
         mergeSort(array)
         end_time = time.perf_counter()
-        tiempo = (end_time - start_time) * 1000
+        tiempo = (end_time - start_time)
 
         
         tamanos.append(tamano)
         times.append(tiempo)
         
-    plt.plot(tamanos, times, color='green')
+    plt.plot(tamanos, times, marker='o', color='green')
     plt.title("Variación del Tiempo de Cómputo con Merge Sort")
     plt.xlabel("Tamaño del Arreglo")
-    plt.ylabel("Tiempo(ms)")
+    plt.ylabel("Tiempo(s)")
     plt.grid(True)
-    plt.legend()
     plt.show()
         
 def mesureTime():
