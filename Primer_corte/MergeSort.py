@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import time
 
 # Generar arreglo sin números repetidos
-array = np.random.choice(range(0, 101), size=20, replace=False)  # Números únicos sin repetición
+array = np.random.choice(range(0, 101), size=50, replace=False)  # Números únicos sin repetición
 
 def mergeSort(array):
     if len(array) > 1:
